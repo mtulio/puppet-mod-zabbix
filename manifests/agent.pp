@@ -64,39 +64,39 @@ class zabbix::agent (
   ## Option DO NOT USE TEMPLATE ##
   ##> CONFIG FILE OPTIONS <##
   ### GENERAL PARAMETERS ###
-  $pid_file        = $zabbix::params::pid_file,
-  $log_file        = $zabbix::params::log_file,
-  $log_file_size   = $zabbix::params::log_file_size,
-  $debug_level     = $zabbix::params::debug_level,
-  $source_ip       = $zabbix::params::source_ip,
-  $en_remote_cmd   = $zabbix::params::en_remote_cmd,
-  $log_remote_cmd  = $zabbix::params::log_remote_cmd,
-  $listen_port     = $zabbix::params::listen_port,
-  $listen_ip       = $zabbix::params::listen_ip,
-  $start_agents    = $zabbix::params::start_agents,
-  $server_active   = $zabbix::params::server_active,
-  $hostname        = $zabbix::params::hostname,
-  $hostname_item   = $zabbix::params::hostname_item,
-  $host_metadata   = $zabbix::params::host_metadata,
-  $host_metadata_it= $zabbix::params::host_metadata_item,
-  $refresh_act_chk = $zabbix::params::refresh_active_checks,
-  $buffers_send    = $zabbix::params::buffers_send,
-  $buffers_size    = $zabbix::params::buffers_size,
-  $max_lines_p_sec = $zabbix::params::max_lines_per_second,
+  $pid_file        = undef,
+  $log_file        = undef,
+  $log_file_size   = undef,
+  $debug_level     = undef,
+  $source_ip       = undef,
+  $en_remote_cmd   = undef,
+  $log_remote_cmd  = undef,
+  $listen_port     = undef,
+  $listen_ip       = undef,
+  $start_agents    = undef,
+  $server_active   = undef,
+  $hostname        = undef,
+  $hostname_item   = undef,
+  $host_metadata   = undef,
+  $host_metadata_it= undef,
+  $refresh_act_chk = undef,
+  $buffers_send    = undef,
+  $buffers_size    = undef,
+  $max_lines_p_sec = undef,
   
   ### ADVANCED PARAMETERS ###
-  $alias_val       = $zabbix::params::alias_val,
-  $timeout         = $zabbix::params::timeout,
-  $allow_root      = $zabbix::params::allow_root,
-  $include         = $zabbix::params::include,
+  $alias_val       = undef,
+  $timeout         = undef,
+  $allow_root      = undef,
+  $include         = undef,
   
   ### USER-DEFINED MONITORED PARAMETERS ###
-  $unsage_usr_par  = $zabbix::params::unsafe_user_parameters,
-  $user_parameter  = $zabbix::params::user_parameter,
+  $unsage_usr_par  = undef,
+  $user_parameter  = undef,
   
   ### ADVANCED PARAMETERS ###
-  $load_mod_path   = $zabbix::params::load_module_path,
-  $load_module     = $zabbix::params::load_module,
+  $load_mod_path   = undef,
+  $load_module     = undef,
 
 ) inherits zabbix::params {
 
@@ -108,13 +108,9 @@ class zabbix::agent (
   if $opt_use_template == 'yes' and $agent_template != undef {
     $template = "$agent_template"
   }
-  # Configuration option 2
-  elsif $opt_use_template == 'yes' {
-    $template = 'zabbix/etc/zabbix/zabbix_agentd.conf.erb'
-  }
-  # Configuration option 3
+  # Configuration option 2 and 3 [use default template]
   else {
-    $template = 'zabbix/etc/zabbix/zabbix_agentd-custom.conf.erb'
+    $template = 'zabbix/etc/zabbix/zabbix_agentd.conf.erb'
   }
   notice("# Using template [$template].")
 
