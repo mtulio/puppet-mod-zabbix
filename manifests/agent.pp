@@ -120,7 +120,7 @@ class zabbix::agent (
   include zabbix::agent::service
 
   # Config & Start
-
+  $zabbix_server = $server
   file { '/etc/zabbix/zabbix_agentd.conf':
     ensure  => present,
     content => template($template),
