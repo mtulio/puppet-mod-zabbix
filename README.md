@@ -93,6 +93,9 @@ See project page at https://github.com/mtulio/puppet-mod-zabbix
 
 ## Release Notes
 
-[0.1.0]
+[1.0.1]
+* Fix default env names
+
+[1.0.0]
 * Add zabbix agent configuration
 

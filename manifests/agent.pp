@@ -1,8 +1,25 @@
-
-# Class Zabbix - Agent
-## Allow you to configure each config of agent.
-
-# There are 3 options to configure:
+# == Class: zabbix::agent
+#
+# Class to manage Zabbix Agent (zabbix::agent)
+#
+# Allow you to configure each option of agent.
+# All parameters default to undef, meaning that the original
+# defaults are used.
+#
+# === Parameters
+#
+# Class to manage the main zabbix_agentd.conf file.
+#
+# [*opt_use_template*]
+#   Must be set. This parameter set use of template. 
+#   Default: yes
+#
+# [*server*]
+#   This parameter set the local zabbix server. 
+#   Default: $zabbix::params::server
+#
+# === Examples
+#
 ## 1 - Using default template
 # class { 'zabbix::agent': 
 #	opt_use_template => 'yes',
@@ -14,7 +31,7 @@
 #	server 		 => 'your.zabbix.server',
 #	agent_template   => 'path/to/your/template.erb',
 # }
-## 3 - Using custom config
+## 3 - Using custom config options
 # class { 'zabbix::agent': 
 #	opt_use_template => 'no',
 #	server		 => 'your.zabbix.server',
@@ -25,11 +42,21 @@
 #	buffers_send     => '10',
 #	buffers_size     => '512',
 # }
+#
+# === Authors
+#
+# Marco Túlio R Braga <git@mtulio.eng.br>
+#
+# === Copyright
+#
+# Copyright 2016 @mtulio
+#
+################################
 
 class zabbix::agent (
-  ## GLOBALS ##
-  $opt_use_template   = 'no',
-  $server             = undef,
+  ## GLOBALS [must be set] ##
+  $opt_use_template   = 'yes',
+  $server             = $zabbix::params::server,
 
   ## Option USE TEMPLETE ##
   $agent_template  = undef,
@@ -89,8 +116,10 @@ class zabbix::agent (
   else {
     $template = 'zabbix/etc/zabbix/zabbix_agentd-custom.conf.erb'
   }
+  notice("# Using template [$template].")
 
   # Install package  
+  include zabbix::user
   include zabbix::agent::package
   include zabbix::agent::service
 

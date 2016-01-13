@@ -1,6 +1,5 @@
-
-# Class zabbix::params
-
+# Param class, not meant to be used on its own.
+#
 class zabbix::params {
 
   $agent_dir      = undef
