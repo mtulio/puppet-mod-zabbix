@@ -52,15 +52,12 @@
 # Copyright 2016 @mtulio
 #
 ################################
-
 class zabbix::agent (
   ## GLOBALS [must be set] ##
   $opt_use_template   = 'yes',
-  $server             = $zabbix::params::server,
-
+  $server             = $server,
   ## Option USE TEMPLETE ##
   $agent_template  = undef,
-  
   ## Option DO NOT USE TEMPLATE ##
   ##> CONFIG FILE OPTIONS <##
   ### GENERAL PARAMETERS ###
@@ -83,36 +80,34 @@ class zabbix::agent (
   $buffers_send    = undef,
   $buffers_size    = undef,
   $max_lines_p_sec = undef,
-  
   ### ADVANCED PARAMETERS ###
   $alias_val       = undef,
   $timeout         = undef,
   $allow_root      = undef,
   $include         = undef,
-  
   ### USER-DEFINED MONITORED PARAMETERS ###
   $unsage_usr_par  = undef,
   $user_parameter  = undef,
-  
   ### ADVANCED PARAMETERS ###
   $load_mod_path   = undef,
   $load_module     = undef,
-
-) inherits zabbix::params {
-
+) inherits zabbix {
+    
+  notice("#INFO zabbix::agent> [$server]")
+  
   if $server == undef {
-    fail("#> ERROR - You must set zabbix server.")
+    fail('#ERROR zabbix::agent> You must set zabbix server.')
   }
 
   # Configuration option 1
   if $opt_use_template == 'yes' and $agent_template != undef {
-    $template = "$agent_template"
+    $template = $agent_template
   }
   # Configuration option 2 and 3 [use default template]
   else {
     $template = 'zabbix/etc/zabbix/zabbix_agentd.conf.erb'
   }
-  notice("# Using template [$template].")
+  notice("#INFO zabbix::agent> Using template [${template}]")
 
   # Install package  
   include zabbix::user
@@ -125,14 +120,13 @@ class zabbix::agent (
     ensure  => present,
     content => template($template),
     mode    => '0644',
-    require => Package[$zabbix::params::agent_package],
-    notify  => Service[$zabbix::params::agent_service],
+    require => Package[$agent_package],
+    notify  => Service[$agent_service],
   }
   
   file {'/var/run/zabbix':
     ensure => directory,
-    group => 'zabbix',
-    owner => 'zabbix',
+    group  => 'zabbix',
+    owner  => 'zabbix',
   }
 }
-

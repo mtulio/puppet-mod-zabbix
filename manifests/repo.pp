@@ -1,15 +1,15 @@
-
 # Class: Repository
 # Depends: Main class [::zabbix]
-
-class zabbix::repo inherits zabbix::params {
+class zabbix::repo inherits zabbix {
   
   # Get from repository defined on zabbix::params
   $zabbix_repo = $repository
   
+  notice("URL: [${zabbix_repo}/zabbix/2.4/rhel/${::operatingsystemmajrelease}/${::architecture}/]")
+
   case $::operatingsystem {
     /(RedHat)/: {
-      notice("Redhat OS must be install from RHN channel [Satellite]. ")
+      notice('Redhat OS must be install from RHN channel [Satellite].')
     }
     /(CentOS|Fedora)/: {
       yumrepo{ 'zabbix':
@@ -21,19 +21,19 @@ class zabbix::repo inherits zabbix::params {
       }
     }
     /(Debian)/: {
-      apt::source {"repo.zabbix.com":
+      apt::source { 'repo.zabbix.com':
         location =>  "${zabbix_repo}/zabbix/2.4/debian",
-        release  => "wheezy",
-        repos    => "main",
-        key      => 'FBABD5FB20255ECAB22EE194D13D58E479EA5ED4'   
+        release  => 'wheezy',
+        repos    => 'main',
+        key      => 'FBABD5FB20255ECAB22EE194D13D58E479EA5ED4',
       }
     }
     /(Ubuntu)/: {
-      apt::source {"repo.zabbix.com":
+      apt::source { 'repo.zabbix.com':
         location =>  "${zabbix_repo}/zabbix/2.4/ubuntu",
-        release  => "precise",
-        repos    => "main",
-        key      => 'FBABD5FB20255ECAB22EE194D13D58E479EA5ED4'   
+        release  => 'precise',
+        repos    => 'main',
+        key      => 'FBABD5FB20255ECAB22EE194D13D58E479EA5ED4',
       }
     }
     default: {

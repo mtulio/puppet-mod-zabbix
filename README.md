@@ -1,10 +1,10 @@
-# Linux
+# zabbix
 
 #### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description](#module-description)
-3. [Setup - The basics of getting started](#setup)
+3. [Setup](#setup)
     * [What module affects](#what-module-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning](#beginning)
@@ -43,27 +43,24 @@ You have three ways to usage the class
 
 1. Using default template
 
- ~~~
-## 1 - Using default template
+```
 class { 'zabbix::agent': 
 	opt_use_template => 'yes',
 	server 		 => 'your.zabbix.server',
 }
- ~~~
+```
 
 2. Using custom template
- ~~~
-## 2 - Using custom template
+```
 class { 'zabbix::agent': 
 	opt_use_template => 'yes',
 	server 		 => 'your.zabbix.server',
 	agent_template   => 'path/to/your/template.erb',
 }
- ~~~
+```
 
 3. Using custom configuration
- ~~~
-## 3 - Using custom config
+```
 class { 'zabbix::agent': 
 	opt_use_template => 'no',
 	server		 => 'your.zabbix.server',
@@ -74,11 +71,7 @@ class { 'zabbix::agent':
 	buffers_send     => '10',
 	buffers_size     => '512',
 }
- ~~~
-
-
-
-
+```
 
 ## Limitations
 
@@ -89,9 +82,15 @@ We're working to support more OS.
 
 ## Development
 
-See project page at https://github.com/mtulio/puppet-mod-zabbix
+See project page at :
+* Github: https://github.com/mtulio/puppet-mod-zabbix
+* Puppet forge: https://forge.puppetlabs.com/mtulio/zabbix
 
 ## Release Notes
+
+[1.0.2]
+* Fix inheritance
+* Review puppet code style
 
 [1.0.1]
 * Fix default env names

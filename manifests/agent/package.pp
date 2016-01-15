@@ -1,12 +1,11 @@
-
-# Class Zabbix Agent Package
-
+# Class Zabbix Agent - Package
 class zabbix::agent::package (
-  $agent_package = $zabbix::params::agent_package,
+  $agent_package = $agent_package,
+) inherits zabbix {
 
-) inherits zabbix::params {
+  include zabbix::repo
 
-  include zabbix::repo 
-  package { $agent_package : ensure => 'latest', }
-
+  package {
+    $agent_package : ensure => 'latest',
+  }
 }

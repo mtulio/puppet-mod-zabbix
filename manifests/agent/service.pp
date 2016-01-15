@@ -1,10 +1,8 @@
-
 # Class Zabbix Agent Service
-
 class zabbix::agent::service (
-  $agent_service = $zabbix::params::agent_service,
-  $agent_package = $zabbix::params::agent_package,
-) inherits zabbix::params {
+  $agent_service = $agent_service,
+  $agent_package = $agent_package,
+) inherits zabbix {
 
   # Config service    
   service { $agent_service:
@@ -12,6 +10,4 @@ class zabbix::agent::service (
     enable  => true,
     require => Package[$agent_package],
   }
-
 }
-
