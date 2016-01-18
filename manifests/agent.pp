@@ -53,11 +53,17 @@
 #
 ################################
 class zabbix::agent (
+  ## INHERITANCE ##
+  $agent_package      = $agent_package,
+  $agent_service      = $agent_service,
+
   ## GLOBALS [must be set] ##
   $opt_use_template   = 'yes',
   $server             = $server,
+
   ## Option USE TEMPLETE ##
-  $agent_template  = undef,
+  $agent_template     = undef,
+
   ## Option DO NOT USE TEMPLATE ##
   ##> CONFIG FILE OPTIONS <##
   ### GENERAL PARAMETERS ###
@@ -93,7 +99,7 @@ class zabbix::agent (
   $load_module     = undef,
 ) inherits zabbix {
     
-  notice("#INFO zabbix::agent> [$server]")
+  notice("#INFO zabbix::agent> [${server}]")
   
   if $server == undef {
     fail('#ERROR zabbix::agent> You must set zabbix server.')

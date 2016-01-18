@@ -1,23 +1,37 @@
 {
   "name": "mtulio-zabbix",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "mtulio",
-  "summary": "Module to manage Zabbix [Agent and Server]",
+  "summary": "Module to manage Zabbix [Agent and Server(soon)]",
   "license": "Apache 2.0",
   "source": "https://github.com/mtulio/puppet-mod-zabbix",
   "project_page": "https://github.com/mtulio/puppet-mod-zabbix",
   "issues_url": "https://github.com/mtulio/puppet-mod-zabbix/issues",
   "tags": ["linux", "zabbix", "agent"],
+  "description": "Module to manage Zabbix [Agent and Server(soon)]",
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
-      "operatingsystem":"RedHat-based",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-      	"7+"
-      ]            
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
     }
   ],
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
 }
-

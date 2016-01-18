@@ -1,9 +1,8 @@
 # Class: Repository
 # Depends: Main class [::zabbix]
-class zabbix::repo inherits zabbix {
-  
-  # Get from repository defined on zabbix::params
-  $zabbix_repo = $repository
+class zabbix::repo (
+  $zabbix_repo = $repository,
+) inherits zabbix {
   
   notice("URL: [${zabbix_repo}/zabbix/2.4/rhel/${::operatingsystemmajrelease}/${::architecture}/]")
 

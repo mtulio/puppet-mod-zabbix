@@ -2,31 +2,32 @@
 
 #### Table of Contents
 
-1. [Overview](#overview)
-2. [Module Description](#module-description)
-3. [Setup](#setup)
+1. [Overview](#1-overview)
+2. [Module Description](#2-module-description)
+3. [Setup](#3-setup)
     * [What module affects](#what-module-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning](#beginning)
-4. [Usage](#usage)
-5. [Reference](#reference)
-5. [Limitations](#limitations)
-6. [Development](#development)
+4. [Usage](#4-usage)
+5. [Limitations](#5-limitations)
+6. [Development](#6-development)
+6. [Release Notes](#7-release-notes)
 
-## Overview
+
+## 1. Overview
 
 This module can install and configure zabbix agent [ and the server in future ]
 
-## Module Description
+## 2. Module Description
 
 Module to manage Zabbix Agent.
 
 
-## Setup
+## 3. Setup
 
- See [Usage](#usage)
+ See [Usage](#4-usage)
 
-### What 'Zabbix' affects
+### What module affects
 
 * This module module will set the zabbix repository [2.4] and install the latest version of agent
 
@@ -37,7 +38,7 @@ Module to manage Zabbix Agent.
 
 This is a great module to configure your Zabbix agent. 
 
-## Usage
+## 4. Usage
 
 You have three ways to usage the class 
 
@@ -73,20 +74,24 @@ class { 'zabbix::agent':
 }
 ```
 
-## Limitations
+## 5. Limitations
 
 OS compatibility [tested]: 
 * Red Hat family 7+ 
 
 We're working to support more OS.
 
-## Development
+## 6. Development
 
 See project page at :
 * Github: https://github.com/mtulio/puppet-mod-zabbix
 * Puppet forge: https://forge.puppetlabs.com/mtulio/zabbix
 
-## Release Notes
+## 7. Release Notes
+
+[1.0.3] 
+* Review puppet code style and inheritance
+* Review Documentation
 
 [1.0.2]
 * Fix inheritance
