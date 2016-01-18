@@ -1,2 +1,5 @@
-# Ignore build files
+# Ignore build packages
 pkg/
+
+# Ignore IDE metadata
+.project

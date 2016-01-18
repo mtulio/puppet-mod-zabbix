@@ -125,7 +125,7 @@ class zabbix::agent (
   }
   
   file {'/var/run/zabbix':
-    ensure => directory,
+    ensure => 'directory',
     group  => 'zabbix',
     owner  => 'zabbix',
   }
