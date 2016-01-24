@@ -5,7 +5,7 @@ class zabbix::agent::package (
 
   include zabbix::repo
 
-  package {
-    $agent_package : ensure => 'latest',
+  package { $agent_package:
+    ensure => 'latest',
   }
 }

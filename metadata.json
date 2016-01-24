@@ -2,7 +2,7 @@
   "name": "mtulio-zabbix",
   "version": "1.1.0",
   "author": "mtulio",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/mtulio/puppet-mod-zabbix",
   "project_page": "https://github.com/mtulio/puppet-mod-zabbix",
   "issues_url": "https://github.com/mtulio/puppet-mod-zabbix/issues",
@@ -32,7 +32,7 @@
     }
   ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.10.0"},
     {"name":"puppetlabs-firewall","version_requirement":">= 1.1.3"}
   ]
 }
