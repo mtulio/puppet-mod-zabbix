@@ -89,6 +89,9 @@ See project page at :
 
 ## 7. Release Notes
 
+[1.1.1]
+* Fix metadata dependences
+
 [1.1.0] <-
 * Add firewall rule when agent is installed
 * Check selinux rules and show a message when it's enforcing mode.
