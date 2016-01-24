@@ -11,7 +11,7 @@
 4. [Usage](#4-usage)
 5. [Limitations](#5-limitations)
 6. [Development](#6-development)
-6. [Release Notes](#7-release-notes)
+7. [Release Notes](#7-release-notes)
 
 
 ## 1. Overview
@@ -89,7 +89,11 @@ See project page at :
 
 ## 7. Release Notes
 
-[1.0.3] 
+[1.1.0]
+* Add firewall rule when agent is installed
+* Check selinux rules and show a message when it's enforcing mode.
+
+[1.0.3] <-
 * Review puppet code style and inheritance
 * Review Documentation
 

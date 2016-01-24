@@ -59,6 +59,8 @@ class zabbix::agent (
 
   ## GLOBALS [must be set] ##
   $opt_use_template   = 'yes',
+  $firewall_enabled   = true,
+  $selinux_mode       = 'permissive',
   $server             = $server,
 
   ## Option USE TEMPLETE ##
@@ -99,7 +101,7 @@ class zabbix::agent (
   $load_module     = undef,
 ) inherits zabbix {
     
-  notice("#INFO zabbix::agent> [${server}]")
+  notice("#I zabbix::agent> [${server}]")
   
   if $server == undef {
     fail('#ERROR zabbix::agent> You must set zabbix server.')
@@ -113,7 +115,7 @@ class zabbix::agent (
   else {
     $template = 'zabbix/etc/zabbix/zabbix_agentd.conf.erb'
   }
-  notice("#INFO zabbix::agent> Using template [${template}]")
+  notice("#I zabbix::agent> Using template [${template}]")
 
   # Install package  
   include zabbix::user
@@ -134,5 +136,32 @@ class zabbix::agent (
     ensure => 'directory',
     group  => 'zabbix',
     owner  => 'zabbix',
+  }
+
+
+  if $firewall_enabled == true {
+    # Setup firewall rules
+    if $::osfamily == 'redhat' and $::operatingsystemmajrelease == 7 {
+
+      ensure_packages('iptables-services', {'ensure' => 'latest'})
+      Package['iptables-services'] -> Firewall <| |>
+
+      # Skip service management
+      #service { 'zabbix-firewalld': enable => false, }
+      #service { 'iptables':  enable => true, }
+    }
+
+    firewall { '001 allow Zabbix Agent conn':
+      iniface => 'eth0',
+      proto   => 'tcp',
+      port    => $listen_port,
+      state   => ['RELATED', 'ESTABLISHED'],
+      action  => 'accept',
+    }
+  }
+  if $::selinux_current_mode == 'enforcing' {
+    warning("#WARN> SELINUX doesn't support Zabbix Agent on ")
+    warning(" ${::selinux_current_mode} mode, please ensure \'permissive\'")
+    warning(' mode or read DRAFT.md to fix it. ;)')
   }
 }

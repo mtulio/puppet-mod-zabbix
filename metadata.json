@@ -1,14 +1,14 @@
 {
   "name": "mtulio-zabbix",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "author": "mtulio",
-  "summary": "Module to manage Zabbix [Agent and Server(soon)]",
   "license": "Apache 2.0",
   "source": "https://github.com/mtulio/puppet-mod-zabbix",
   "project_page": "https://github.com/mtulio/puppet-mod-zabbix",
   "issues_url": "https://github.com/mtulio/puppet-mod-zabbix/issues",
-  "tags": ["linux", "zabbix", "agent"],
+  "summary": "Module to manage Zabbix [Agent and Server(soon)]",
   "description": "Module to manage Zabbix [Agent and Server(soon)]",
+  "tags": ["linux", "zabbix", "agent"],
   "requirements": [
     {
       "name": "puppet",
@@ -32,6 +32,7 @@
     }
   ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs-firewall","version_requirement":">= 1.1.3"}
   ]
 }
