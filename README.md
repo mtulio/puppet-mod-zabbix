@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/mtulio/puppet-mod-zabbix.png?branch=master)](https://travis-ci.org/mtulio/puppet-mod-zabbix)
 
 
+
 #### Table of Contents
 
 1. [Overview](#1-overview)
