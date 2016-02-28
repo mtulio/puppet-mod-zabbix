@@ -1,5 +1,9 @@
 # zabbix
 
+[![Puppet Forge](http://img.shields.io/puppetforge/v/mtulio/zabbix.svg)](https://forge.puppetlabs.com/mtulio/zabbix)
+[![Build Status](https://travis-ci.org/mtulio/puppet-mod-zabbix.png?branch=master)](https://travis-ci.org/mtulio/puppet-mod-zabbix)
+
+
 #### Table of Contents
 
 1. [Overview](#1-overview)
